@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <main className="">
-        <nav className="m-0 p-0 fixed top-0 w-full bg-white z-10">
+        <nav className="m-0 p-0 fixed top-0 w-full bg-white z-50">
           <div className="mx-auto">
             <div className="flex justify-between items-center py-4 px-4 md:px-16">
               <div className="w-40 md:w-64">
