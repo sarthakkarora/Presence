@@ -1,10 +1,16 @@
+"use client";
 import Image from "next/image";
+import React, { createContext } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { BoxReveal } from "@/components/magicui/box-reveal";
 import BlurFade from "@/components/magicui/blur-fade";
+import Globe from "@/components/home/globe";
+
 
 export default function Home() {
+  
+
   return (
     <>
       <main className="">
@@ -28,7 +34,7 @@ export default function Home() {
           </div>
         </nav>
 
-        <div className="flex md:flex-row mb-32 flex-col md:mt-32 mt-16 px-3 md:px-32 mx-auto">
+        <div className="flex md:flex-row md-0 md:mb-32 flex-col md:mt-32 mt-16 px-3 md:px-32 mx-auto">
           <div className="h-full w-full max-w-[40rem] items-center justify-center overflow-hidden pt-8">
             <BoxReveal boxColor={"#00bf89"} duration={0.5}>
               <p className="md:text-[3rem] text-[1.75rem] font-semibold">
@@ -54,11 +60,9 @@ export default function Home() {
                   -&gt; Comprehensive leave management system, including
                   approval and tracking of Paid Leaves (PL). <br />
                   -&gt; Built using
-                  <span className="font-semibold text-[#2cb68f]"> Next.js</span>,
-                  <span className="font-semibold text-[#00bf89]">
-                    {" "}
-                    MongoDB
-                  </span>
+                  <span className="font-semibold text-[#2cb68f]"> Next.js</span>
+                  ,
+                  <span className="font-semibold text-[#00bf89]"> MongoDB</span>
                   ,
                   <span className="font-semibold text-[#00bf89]">
                     {" "}
@@ -75,17 +79,39 @@ export default function Home() {
             </BoxReveal>
 
             <BoxReveal boxColor={"#00bf89"} duration={0.5}>
-              <Link href={"/signup"}><Button className="mt-[1.6rem] bg-blue-500 hover:!bg-blue-700">Get Started</Button></Link>
-              <Link href={"/signup"}><Button className="mt-[1.6rem] bg-blue-500 hover:!bg-blue-700 ml-2">Download App</Button></Link>
-
+              <Link href={"/signup"}>
+                <Button className="mt-[1.6rem] bg-blue-500 hover:!bg-blue-700">
+                  Get Started
+                </Button>
+              </Link>
+              <Link href={"/"}>
+                <Button className="mt-[1.6rem] bg-blue-500 hover:!bg-blue-700 ml-2">
+                  Download App
+                </Button>
+              </Link>
             </BoxReveal>
           </div>
-        <BlurFade delay={0.25*2} inView>
-          <div id="main-image" className="md:px-8 py-16 md:py-0">
-            <Image src={"/images/main-image.webp"} width={600} height={400}></Image>
-          </div>
-        </BlurFade>
+          <BlurFade delay={0.25 * 2} inView>
+            <div id="main-image" className="md:px-8 py-16 md:py-0">
+              <Image
+                src={"/images/main-image.webp"}
+                width={600}
+                height={400}
+                alt="main-image"
+              ></Image>
+            </div>
+          </BlurFade>
         </div>
+
+        {/* <World globeConfig={globeConfig} /> */}
+          <Globe/>
+        {/* <Globe /> */}
+
+        
+
+
+      
+        
       </main>
     </>
   );
