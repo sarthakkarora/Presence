@@ -1,3 +1,4 @@
+"use client";
 export default function SignupPage() {
     const handleSignup = (e) => {
       e.preventDefault();
