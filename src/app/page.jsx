@@ -6,11 +6,9 @@ import { Button } from "@/components/ui/button";
 import { BoxReveal } from "@/components/magicui/box-reveal";
 import BlurFade from "@/components/magicui/blur-fade";
 import Globe from "@/components/home/globe";
-
+import NewFooter from "@/components/home/footer";
 
 export default function Home() {
-  
-
   return (
     <>
       <main className="">
@@ -104,14 +102,63 @@ export default function Home() {
         </div>
 
         {/* <World globeConfig={globeConfig} /> */}
-          <Globe/>
+        <Globe />
         {/* <Globe /> */}
-
-        
-
-
-      
-        
+        <BlurFade delay={0.25 * 2} inView>
+          <div
+            id="gps-tracking"
+            className="flex flex-col justify-center items-center gap-4 md:mt-16 !mt-0 md:p-0 px-4 py-4"
+          >
+            <p className="md:text-[3rem] text-[1.75rem] font-semibold">
+              GPS time tracking <span className="text-[#2cb68f]">.</span>
+            </p>
+            <h2 className="mt-[.5rem] text-[0.3] md:text-[1rem] text-center">
+              Some of your field agents need to log time for remote projects.{" "}
+              <br />
+              Zoho People's GPS-based time-tracking solution allows employees{" "}
+              <br />
+              to log time for work done in the office or outside, seamlessly{" "}
+              <br />
+              capturing data for accurate billing.
+            </h2>
+            <div>
+              <Image
+                src={"/images/gps-time-tracking.webp"}
+                height={700}
+                width={700}
+                alt="gps-time-tracking"
+              ></Image>
+            </div>
+          </div>
+        </BlurFade>
+        <BlurFade delay={0.25 * 2} inView>
+          <div
+            id="retrieve-location"
+            className="flex flex-col md:flex-row md:px-[16rem] px-2 md:mt-32 mb-32 mt-2"
+          >
+            <div id="content" className="md:w-[36rem] px-4 gap-4 mb-8">
+              <p className="md:text-[3rem] text-[1.75rem] font-semibold">
+                Retrieve location and time{" "}
+                <span className="text-[#2cb68f]">.</span>
+              </p>
+              <h2 className="mt-[.5rem] text-[0.3] md:text-[1rem]">
+                For managers monitoring mobile reporters, like a team of sales
+                executives, Zoho People makes it simple to accurately track the
+                time and location of employees logging in and out, ensuring
+                maximum productivity.
+              </h2>
+            </div>
+            <div id="image" className="px-8 h-auto w-auto">
+              <Image
+                src={"/images/retrieve-location-and-time.webp"}
+                height={400}
+                width={400}
+                alt="retrieve-location"
+              ></Image>
+            </div>
+          </div>
+        </BlurFade>
+        <NewFooter />
       </main>
     </>
   );
