@@ -1,3 +1,4 @@
+"use client";
 import { useState } from 'react';
 import Calendar from 'react-calendar'; // You can use a library like this for the calendar
 
