@@ -400,7 +400,7 @@ export default function Globe() {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center py-20 h-screen md:h-auto dark:bg-black bg-white relative w-full">
+    <div className="flex flex-col items-center justify-center py-20 md:h-screen h-auto dark:bg-black bg-white relative w-full">
       <div className="max-w-7xl mx-auto w-full relative overflow-hidden h-full md:h-[40rem] px-4">
         <motion.div
           initial={{
@@ -429,7 +429,7 @@ export default function Globe() {
         <div className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-40" />
 
         {/* Globe container */}
-        <div className="relative md:w-[70%] mx-auto flex justify-center items-center w-[22rem] sm:w-[26rem] md:-bottom-20 h-[20rem] sm:h-[28rem] md:h-[32rem] z-10">
+        <div className="relative md:w-[70%] mx-auto flex justify-center items-center w-[22rem] sm:w-[26rem] bottom-0 md:-bottom-20 h-[20rem] sm:h-[28rem] md:h-[32rem] z-10">
           <World data={sampleArcs} globeConfig={globeConfig} />
         </div>
       </div>
