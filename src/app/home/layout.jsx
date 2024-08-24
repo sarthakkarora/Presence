@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="md:!bg-grid-small-black/[0.2]">
+    <html lang="en" className="h-full w-full ">
       <head>
         <link rel="icon" href="/favicon.svg" />
       </head>
