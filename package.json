@@ -12,20 +12,19 @@
     "@radix-ui/react-avatar": "^1.1.0",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-slot": "^1.1.0",
-    "@react-three/drei": "^9.111.2",
+    "@react-three/drei": "^9.111.3",
     "@react-three/fiber": "^8.17.5",
     "@tabler/icons-react": "^3.12.0",
+    "bcryptjs": "^2.4.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cobe": "^0.6.3",
-    "framer-motion": "^11.3.29",
+    "framer-motion": "^11.3.30",
     "lucide-react": "^0.435.0",
-    "mapbox-gl": "^3.6.0",
     "mini-svg-data-uri": "^1.4.4",
     "mongodb": "^6.8.0",
     "mongoose": "^8.5.4",
-    "moongose": "^1.0.0",
-    "next": "14.2.5",
+    "next": "14.2.6",
     "next-auth": "^4.24.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -43,7 +42,7 @@
   "devDependencies": {
     "postcss": "^8.4.41",
     "tailwindcss": "^3.4.10",
-    "eslint": "^9.9.0",
-    "eslint-config-next": "14.2.5"
+    "eslint": "^9.9.1",
+    "eslint-config-next": "14.2.6"
   }
 }

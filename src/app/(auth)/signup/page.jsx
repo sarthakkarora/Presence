@@ -1,19 +1,55 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { IconBrandGithub, IconBrandGoogle } from "@tabler/icons-react";
 import Link from "next/link";
-import {signIn} from "next-auth/react"
+import { signIn } from "next-auth/react";
 import Image from "next/image";
+import { useRouter } from 'next/router';
 
 function SignupFormDemo() {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted");
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
+  const [error, setError] = useState("");
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [id]: value
+    }));
   };
-  
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    try {
+      const res = await signIn("credentials", {
+        redirect: false,
+        email: formData.email,
+        password: formData.password,
+        name: `${formData.firstName} ${formData.lastName}`,
+        action: "signup"
+      });
+
+      if (res.error) {
+        setError(res.error);
+      } else {
+        // Signup successful, redirect to dashboard or home page
+        window.location.href = "/home";
+      }
+    } catch (error) {
+      setError("An unexpected error occurred. Please try again.");
+    }
+  };
+
   return (
     <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 md:shadow-md shadow-input bg-white dark:bg-black md:mt-16 mt-8">
       <div className="flex gap-2 ">
@@ -34,12 +70,26 @@ function SignupFormDemo() {
       <form className="my-8" onSubmit={handleSubmit}>
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
           <LabelInputContainer>
-            <Label htmlFor="firstname">First name</Label>
-            <Input id="firstname" placeholder="Akshita" type="text" />
+            <Label htmlFor="firstName">First name</Label>
+            <Input 
+              id="firstName" 
+              placeholder="Akshita" 
+              type="text" 
+              value={formData.firstName}
+              onChange={handleChange}
+              required
+            />
           </LabelInputContainer>
           <LabelInputContainer>
-            <Label htmlFor="lastname">Last name</Label>
-            <Input id="lastname" placeholder="Srivastava" type="text" />
+            <Label htmlFor="lastName">Last name</Label>
+            <Input 
+              id="lastName" 
+              placeholder="Srivastava" 
+              type="text" 
+              value={formData.lastName}
+              onChange={handleChange}
+              required
+            />
           </LabelInputContainer>
         </div>
         <LabelInputContainer className="mb-4">
@@ -48,12 +98,24 @@ function SignupFormDemo() {
             id="email"
             placeholder="me@akshitasrivastava.xyz"
             type="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
           />
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="password">Password</Label>
-          <Input id="password" placeholder="••••••••" type="password" />
+          <Input 
+            id="password" 
+            placeholder="••••••••" 
+            type="password" 
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
         </LabelInputContainer>
+
+        {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
 
         <button
           className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
@@ -68,7 +130,7 @@ function SignupFormDemo() {
         <div className="flex gap-3">
           <button
             className=" relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-100 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
-            type="submit"
+            type="button"
             onClick={() => signIn("github")}
           >
             <IconBrandGithub className="h-4 w-4 text-neutral-800 dark:text-neutral-300" />
@@ -79,7 +141,7 @@ function SignupFormDemo() {
           </button>
           <button
             className=" relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-100 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
-            type="submit"
+            type="button"
             onClick={() => signIn("google")}
           >
             <IconBrandGoogle className="h-4 w-4 text-neutral-800 dark:text-neutral-300" />
@@ -93,6 +155,8 @@ function SignupFormDemo() {
     </div>
   );
 }
+
+// ... (BottomGradient and LabelInputContainer components remain the same)
 
 const BottomGradient = () => {
   return (
