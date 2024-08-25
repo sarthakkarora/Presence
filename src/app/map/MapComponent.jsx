@@ -120,6 +120,18 @@ const MapComponent = () => {
   const [selectedLocation, setSelectedLocation] = useState(null);
   const mapRef = useRef(null);
 
+  const [geofences, setGeofences] = useState([]);
+
+  useEffect(() => {
+    const fetchGeofences = async () => {
+      const response = await fetch("/api/getGeofences");
+      const data = await response.json();
+      setGeofences(data);
+    };
+
+    fetchGeofences();
+  }, []);
+
   useEffect(() => {
     const handleSuccess = (position) => {
       const { latitude, longitude } = position.coords;
@@ -143,16 +155,19 @@ const MapComponent = () => {
   }, [initialPositionSet]);
 
   useEffect(() => {
-    // Calculate distances and sort locations
-    const locationsWithDistance = geofencingLocations.map((loc) => ({
-      ...loc,
-      distance: calculateDistance(position[0], position[1], loc.lat, loc.lng),
-    }));
-    const sortedLocations = locationsWithDistance.sort(
-      (a, b) => a.distance - b.distance
-    );
+    console.log("Calculating distances. Position:", position, "Geofences:", geofences);
+    const locationsWithDistance = geofences.map((loc) => {
+      const distance = calculateDistance(position[0], position[1], loc.lat, loc.lng);
+      console.log(`Distance for ${loc.name}:`, distance);
+      return {
+        ...loc,
+        distance
+      };
+    });
+    console.log("Locations with distances:", locationsWithDistance);
+    const sortedLocations = locationsWithDistance.sort((a, b) => a.distance - b.distance);
     setNearestLocations(sortedLocations.slice(0, 5));
-  }, [position]);
+  }, [position, geofences]);
 
   const calculateDistance = (lat1, lon1, lat2, lon2) => {
     const R = 6371; // Radius of the earth in km
