@@ -91,12 +91,12 @@ export default function Home() {
           </div>
           <BlurFade delay={0.25 * 2} inView>
             <div id="main-image" className="md:px-8 py-16 md:py-0">
-              <Image
+              <img
                 src={"/images/main-image.webp"}
                 width={600}
                 height={400}
                 alt="main-image"
-              ></Image>
+              ></img>
             </div>
           </BlurFade>
         </div>

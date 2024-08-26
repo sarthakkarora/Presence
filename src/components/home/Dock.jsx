@@ -26,14 +26,9 @@ function MainDock() {
             </Link>
         </DockIcon>
         <DockIcon className="bg-black/10 dark:bg-white/10 p-3">
-        <Link href={"/calendar"}>
+        <Link href={"/history"}>
           <Icons.calendar className="size-full" />
             </Link>
-        </DockIcon>
-        <DockIcon className="bg-black/10 dark:bg-white/10 p-3">
-          <Link href={"/dashboard"}>
-          <Icons.dashboard className="size-full" />
-          </Link>
         </DockIcon>
       </Dock>
     </div>

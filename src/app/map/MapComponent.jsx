@@ -6,7 +6,6 @@ import L from "leaflet";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Terminal } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import MainDock from "@/components/home/dock";
 
 const LocationMarker = ({ position }) => (
   <Marker
@@ -264,7 +263,6 @@ const MapComponent = () => {
           </Alert>
         ))}
       </div>
-      <MainDock />
     </>
   );
 };

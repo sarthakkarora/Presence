@@ -32,6 +32,7 @@ function LoginFormDemo() {
         redirect: false,
         email: formData.email,
         password: formData.password,
+        role: "employee",
         action: "login"
       });
 
@@ -47,7 +48,7 @@ function LoginFormDemo() {
   };
 
   const handleOAuthSignIn = (provider) => {
-    signIn(provider, { callbackUrl: "/dashboard" });
+    signIn(provider, { callbackUrl: "/home" });
   };
 
   return (
