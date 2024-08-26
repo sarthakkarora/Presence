@@ -69,7 +69,7 @@ function MainPage() {
 
       {error && <p style={{ color: "red" }}>{error}</p>}
 
-     { !attendanceData && selectedDate && <div className="font-semibold border-l-8 border-blue-500 pl-2 mr-auto ml-8 md:ml-[10rem]">
+     { selectedDate && (totalHours !== 0) && <div className="font-semibold border-l-8 border-blue-500 pl-2 mr-auto ml-8 md:ml-[10rem]">
         Total Working Hours <br></br>
         {totalHours} Hrs
       </div>
