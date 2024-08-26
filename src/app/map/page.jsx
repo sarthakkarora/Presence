@@ -1,8 +1,12 @@
 "use client";
 import ClientSideMap from './ClientSideMap';
 import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import MainDock from "@/components/home/Dock";
+import AdminDock from "@/components/home/Admindock";
 
 const YourPage = () => {
+  const { data: session, status } = useSession();
 
   const [geofences, setGeofences] = useState([]);
 
@@ -23,6 +27,7 @@ const YourPage = () => {
     
     <div>
       <ClientSideMap />
+      {session?.user?.role=== "admin"? <AdminDock /> : <MainDock />}
     </div>
   );
 };

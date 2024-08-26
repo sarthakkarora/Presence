@@ -2,7 +2,8 @@
 import { useSession, signOut } from "next-auth/react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import MainDock from "@/components/home/dock";
+import MainDock from "@/components/home/Dock";
+import AdminDock from "@/components/home/Admindock";
 
 export default function HomePage() {
   // Example role check
@@ -12,7 +13,7 @@ export default function HomePage() {
   return (
     <div className="flex items-center justify-center">
       <h1>home</h1>
-      <MainDock />
+      {session?.user?.role=== "admin"? <AdminDock /> : <MainDock />}
     </div>
   );
 }

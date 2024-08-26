@@ -149,7 +149,7 @@ const handler = NextAuth({
       session.user.email = token.email;
       session.user.name = token.name;
       session.user.image = token.image || "https://static.vecteezy.com/system/resources/thumbnails/005/545/335/small/user-sign-icon-person-symbol-human-avatar-isolated-on-white-backogrund-vector.jpg";
-      session.user.role = token.role;
+      session.user.role = token.role || "employee";
       return session;
     },
   },
