@@ -62,7 +62,8 @@ function MainPage() {
     : 0;
 
   return (
-    <div className="flex justify-center items-center mt-8 md:w-[40rem] w-full px-4 py-6 mx-auto flex-col space-y-2">
+    <div className="flex overflow-x-hidden justify-center items-center mt-8 md:w-[40rem] w-auto px-4 py-6 mx-auto flex-col space-y-2">
+      
       <DatePickerDemo date={selectedDate} setDate={setSelectedDate} />
 
       {loading && <p>Loading attendance data...</p>}
