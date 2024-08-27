@@ -2,7 +2,7 @@
 import * as React from "react"
 import { CalendarIcon } from "@radix-ui/react-icons"
 import { format } from "date-fns"
-
+import { parseISO } from "date-fns";
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
@@ -40,7 +40,7 @@ export function DatePickerDemo({ date, setDate }) {
       <PopoverContent className="w-auto p-0" align="start">
         <Calendar
           mode="single"
-          selected={date ? new Date(date) : null}
+          selected={date ? parseISO(date) : null}
           onSelect={handleDateSelect}
           initialFocus
         />
