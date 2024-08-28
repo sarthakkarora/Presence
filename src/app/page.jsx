@@ -109,18 +109,16 @@ export default function Home() {
             id="gps-tracking"
             className="flex flex-col justify-center items-center gap-4 md:mt-16 !mt-0 md:p-0 px-4 py-4"
           >
-            <p className="md:text-[3rem] text-[1.75rem] font-semibold">
-              GPS time tracking <span className="text-[#2cb68f]">.</span>
+            <p className="md:text-[3rem] text-[1.75rem] font-bold">
+             Real Time Attendance Tracking, No hassle! <span className="text-[#2cb68f]">.</span>
             </p>
-            <h2 className="mt-[.5rem] text-[0.3] md:text-[1rem] text-center">
-              Some of your field agents need to log time for remote projects.{" "}
+            <h2 className="mt-[.5rem] text-[0.3] md:text-[1rem] text-center font-semibold">
+             Say goodbye to manual attendance with our automated GPS tracking functionality app Presence.{" "}
               <br />
-              Zoho People's GPS-based time-tracking solution allows employees{" "}
+              Its a user friendly app that aims at managing the workhours of your workforce seamlessly {" "}
               <br />
-              to log time for work done in the office or outside, seamlessly{" "}
-              <br />
-              capturing data for accurate billing.
-            </h2>
+              ensuring accuracy and reliability with GPS enabled check-ins and time tracking.{" "}
+              </h2>
             <div>
               <Image
                 src={"/images/gps-time-tracking.webp"}
@@ -137,15 +135,14 @@ export default function Home() {
             className="flex flex-col md:flex-row md:px-[16rem] px-2 md:mt-32 mb-32 mt-2"
           >
             <div id="content" className="md:w-[36rem] px-4 gap-4 mb-8">
-              <p className="md:text-[3rem] text-[1.75rem] font-semibold">
-                Retrieve location and time{" "}
+              <p className="md:text-[3rem] text-[1.75rem] font-bold">
+                Geo Fenced Attendance Zones{" "}
                 <span className="text-[#2cb68f]">.</span>
               </p>
-              <h2 className="mt-[.5rem] text-[0.3] md:text-[1rem]">
-                For managers monitoring mobile reporters, like a team of sales
-                executives, Zoho People makes it simple to accurately track the
-                time and location of employees logging in and out, ensuring
-                maximum productivity.
+              <h2 className="mt-[.5rem] text-[0.3] md:text-[1rem] font-semibold">
+              Sets up specific areas where attendance is logged  to ensure presence at right location <br />
+              and generates detailed attendance report including the check-in and check-out times ,<br />
+              the workhours associated with specified location and keeps a record of the leaves taken and remaining ones .
               </h2>
             </div>
             <div id="image" className="px-8 h-auto w-auto">
