@@ -94,14 +94,14 @@ function MainPage() {
                   </div>
                   <AlertDescription>
                     <div className="flex justify-between text-[13px] py-2">
-                      <p className="border-l-8 border-white border-l-green-500 pl-1 text-green-400">
+                      <p className="border-l-8 border-white border-l-green-500 pl-1 text-green-700">
                         Checkin:{" "}
                         {new Date(entry.checkin_time).toLocaleTimeString(
                           "en-GB",
                           { hour: "2-digit", minute: "2-digit" }
                         )}
                       </p>
-                      <p className="border-l-8 border-white border-l-red-500 pl-1 text-red-400">
+                      <p className="border-l-8 border-white border-l-red-500 pl-1 text-red-700">
                         Checkout:{" "}
                         {new Date(entry.checkout_time).toLocaleTimeString(
                           "en-GB",

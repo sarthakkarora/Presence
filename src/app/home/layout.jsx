@@ -10,12 +10,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="h-full w-full ">
+    <html lang="en" className="h-full w-full dark:bg-black bg-white  dark:bg-dot-white/[0.2] bg-dot-black/[0.2] ">
       <head>
         <link rel="icon" href="/favicon.svg" />
       </head>
       
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className} >
+        {children}
+
+
+
+        </body>
     </html>
   );
 }

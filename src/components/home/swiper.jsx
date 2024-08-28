@@ -1,77 +1,55 @@
-"use client";
+'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Button } from "@/components/ui/button";
+import { LogIn, LogOut } from 'lucide-react';
 
-const SwipeButton = ({ onCheckIn, onCheckOut }) => {
-  const [isCheckedIn, setIsCheckedIn] = useState(false);
-  const buttonRef = useRef(null);
-  const containerRef = useRef(null);
+function CheckInOutButton({ 
+  isCheckedIn, 
+  handleCheckIn, 
+  handleCheckOut 
+}) {
+  const [isDisabled, setIsDisabled] = useState(false);
 
-  useEffect(() => {
-    updateButtonPosition();
-  }, [isCheckedIn]);
+  const handleClick = () => {
+    if (isDisabled) return;
 
-  const updateButtonPosition = () => {
-    const button = buttonRef.current;
-    const container = containerRef.current;
-    if (button && container) {
-      const containerWidth = container.offsetWidth;
-      const buttonWidth = button.offsetWidth;
-      button.style.transform = isCheckedIn
-        ? `translateX(${containerWidth - buttonWidth - 4}px)`
-        : 'translateX(0)';
+    setIsDisabled(true);
+    if (isCheckedIn) {
+      handleCheckOut();
+    } else {
+      handleCheckIn();
     }
-  };
 
-  const handleInteraction = (e) => {
-    e.preventDefault();
-    const container = containerRef.current;
-    const button = buttonRef.current;
-    if (container && button) {
-      const containerWidth = container.offsetWidth;
-      const buttonWidth = button.offsetWidth;
-      const threshold = containerWidth / 2;
-      
-      let clientX;
-      if (e.type === 'touchend') {
-        clientX = e.changedTouches[0].clientX;
-      } else {
-        clientX = e.clientX;
-      }
-
-      const buttonRect = button.getBoundingClientRect();
-      const buttonPosition = buttonRect.left + buttonWidth / 2;
-
-      if (buttonPosition > threshold && !isCheckedIn) {
-        setIsCheckedIn(true);
-        onCheckIn();
-      } else if (buttonPosition <= threshold && isCheckedIn) {
-        setIsCheckedIn(false);
-        onCheckOut();
-      } else {
-        // If not crossing the threshold, snap back to the original position
-        updateButtonPosition();
-      }
-    }
+    setTimeout(() => {
+      setIsDisabled(false);
+    }, 1500);
   };
 
   return (
-    <div 
-      ref={containerRef}
-      className={`w-72 h-14 rounded-full relative overflow-hidden transition-colors duration-300 ${isCheckedIn ? 'bg-red-400' : 'bg-green-300'}`}
-      onClick={handleInteraction}
-      onTouchEnd={handleInteraction}
-    >
-      <div 
-        ref={buttonRef}
-        className="w-12 h-12 bg-white rounded-full absolute top-1 left-1 flex items-center justify-center text-xs font-bold text-gray-700 cursor-pointer transition-all duration-300 select-none whitespace-nowrap px-2"
+    <div className="relative justify-center">
+      <Button 
+        onClick={handleClick} 
+        disabled={isDisabled}
+        className={`flex items-center gap-2 w-80 transition-none ${
+          isDisabled ? 'opacity-50 cursor-not-allowed' : ''
+        }`}
+        style={{ pointerEvents: isDisabled ? 'none' : 'auto' }}
       >
-        <span className="pointer-events-none">
-          {isCheckedIn ? '<=' : '=>'}
-        </span>
-      </div>
+        {isCheckedIn ? (
+          <>
+            <LogOut size={18} />
+            Check Out
+          </>
+        ) : (
+          <>
+            <LogIn size={18} />
+            Check In
+          </>
+        )}
+      </Button>
     </div>
   );
-};
+}
 
-export default SwipeButton;
+export default CheckInOutButton;

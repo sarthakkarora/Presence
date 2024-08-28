@@ -8,7 +8,7 @@ function AdminDock() {
       <Dock
         magnification={40}
         distance={100}
-        className="fixed bottom-4 left-0 right-0 space-x-1 md:scale-110 px-2"
+        className="fixed bottom-4 left-0 right-0 space-x-2 md:scale-110 px-4"
       >
         <DockIcon className="bg-black/10 dark:bg-white/10 p-3">
           <Link href={"/home"}>
