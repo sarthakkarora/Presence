@@ -62,7 +62,8 @@ function MainPage() {
     : 0;
 
   return (
-    <div className="flex justify-center items-center mt-8 md:w-[40rem] w-full px-4 py-6 mx-auto flex-col space-y-2">
+    <div className="flex overflow-x-hidden justify-center items-center mt-8 md:w-[40rem] w-auto px-4 py-6 mx-auto flex-col space-y-2">
+      
       <DatePickerDemo date={selectedDate} setDate={setSelectedDate} />
 
       {loading && <p>Loading attendance data...</p>}
@@ -93,14 +94,14 @@ function MainPage() {
                   </div>
                   <AlertDescription>
                     <div className="flex justify-between text-[13px] py-2">
-                      <p className="border-l-8 border-white border-l-green-500 pl-1 text-green-400">
+                      <p className="border-l-8 border-white border-l-green-500 pl-1 text-green-700">
                         Checkin:{" "}
                         {new Date(entry.checkin_time).toLocaleTimeString(
                           "en-GB",
                           { hour: "2-digit", minute: "2-digit" }
                         )}
                       </p>
-                      <p className="border-l-8 border-white border-l-red-500 pl-1 text-red-400">
+                      <p className="border-l-8 border-white border-l-red-500 pl-1 text-red-700">
                         Checkout:{" "}
                         {new Date(entry.checkout_time).toLocaleTimeString(
                           "en-GB",
